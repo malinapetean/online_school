@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Online_school-library/1.0.0": {
+        "runtime": {
+          "Online_school-library.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Online_school-library/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

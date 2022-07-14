@@ -1,0 +1,14 @@
+D:\mycode\csharp\Mostenirea\Online_school-library\Online_school-library\bin\Debug\netcoreapp3.1\Online_school-library.exe
+D:\mycode\csharp\Mostenirea\Online_school-library\Online_school-library\bin\Debug\netcoreapp3.1\Online_school-library.deps.json
+D:\mycode\csharp\Mostenirea\Online_school-library\Online_school-library\bin\Debug\netcoreapp3.1\Online_school-library.runtimeconfig.json
+D:\mycode\csharp\Mostenirea\Online_school-library\Online_school-library\bin\Debug\netcoreapp3.1\Online_school-library.runtimeconfig.dev.json
+D:\mycode\csharp\Mostenirea\Online_school-library\Online_school-library\bin\Debug\netcoreapp3.1\Online_school-library.dll
+D:\mycode\csharp\Mostenirea\Online_school-library\Online_school-library\bin\Debug\netcoreapp3.1\Online_school-library.pdb
+D:\mycode\csharp\Mostenirea\Online_school-library\Online_school-library\obj\Debug\netcoreapp3.1\Online_school-library.csproj.AssemblyReference.cache
+D:\mycode\csharp\Mostenirea\Online_school-library\Online_school-library\obj\Debug\netcoreapp3.1\Online_school-library.GeneratedMSBuildEditorConfig.editorconfig
+D:\mycode\csharp\Mostenirea\Online_school-library\Online_school-library\obj\Debug\netcoreapp3.1\Online_school-library.AssemblyInfoInputs.cache
+D:\mycode\csharp\Mostenirea\Online_school-library\Online_school-library\obj\Debug\netcoreapp3.1\Online_school-library.AssemblyInfo.cs
+D:\mycode\csharp\Mostenirea\Online_school-library\Online_school-library\obj\Debug\netcoreapp3.1\Online_school-library.csproj.CoreCompileInputs.cache
+D:\mycode\csharp\Mostenirea\Online_school-library\Online_school-library\obj\Debug\netcoreapp3.1\Online_school-library.dll
+D:\mycode\csharp\Mostenirea\Online_school-library\Online_school-library\obj\Debug\netcoreapp3.1\Online_school-library.pdb
+D:\mycode\csharp\Mostenirea\Online_school-library\Online_school-library\obj\Debug\netcoreapp3.1\Online_school-library.genruntimeconfig.cache
