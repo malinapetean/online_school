@@ -15,11 +15,14 @@ namespace view
         public PnlAsside(Button add,Form1 form)
         {
             this.Location = new Point(650, 70);
-            this.Name = "PnlAsside";
+            this.Name = "PnlAsside"; 
+            this.Parent = form;
             this.Size = new Size(150, 382);
             this.BackColor = System.Drawing.Color.Plum;
-      
-            this.form = form;
+            this.Dock = System.Windows.Forms.DockStyle.Right;
+
+
+
 
             btnAdd = add;
             this.btnAdd.Location = new System.Drawing.Point(27,24);
@@ -28,7 +31,7 @@ namespace view
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "Add course";
             this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.btnAdd.BackColor = System.Drawing.Color.Lavender;
+            this.btnAdd.BackColor = System.Drawing.Color.MediumOrchid;
             this.btnAdd.FlatAppearance.BorderSize = 0;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);

@@ -19,7 +19,8 @@ namespace Online_school_library.Controllers
         }
         public void load()
         {
-            StreamReader read = new StreamReader(@"D:\mycode\csharp\Mostenirea\Online_school-library\Online_school-library\Resources\courses.txt");
+            courses.Clear();
+            StreamReader read = new StreamReader(@"D:\mycode\csharp\projects\Online_school-library\Online_school-library\Resources\courses.txt");
             string txt = "";
 
             this.courses.Clear();
@@ -47,7 +48,7 @@ namespace Online_school_library.Controllers
         }
         public void save()
         {
-            StreamWriter write = new StreamWriter(@"D:\mycode\csharp\Mostenirea\Online_school-library\Online_school-library\Resources\courses.txt");
+            StreamWriter write = new StreamWriter(@"D:\mycode\csharp\projects\Online_school-library\Online_school-library\Resources\courses.txt");
             write.Write(this.toSave());
             write.Close();
         }
@@ -78,6 +79,42 @@ namespace Online_school_library.Controllers
                 return true;
             }
             return false;
+        }
+        public Course getCourseByID(int id)
+        {
+            foreach (Course c in courses)
+            {
+                if (c.Id.Equals(id))
+                {
+                    return c;
+                }
+            }
+            return null;
+        }
+        public void updateCourse(Course course)
+        {
+            foreach (Course c in courses)
+            {
+                if (c.Id.Equals(course.Id))
+                {
+                    c.Name=course.Name;
+                    c.Department=course.Department;
+                    c.Detalis=course.Detalis;
+                    
+                }
+            }
+            this.save();
+        }
+        public void delete(Course c)
+        {
+            for (int i = 0; i < courses.Count; i++)
+            {
+                if (courses[i].Id.Equals(c.Id))
+                {
+                    courses.RemoveAt(i);
+                }
+            }
+            this.save();
         }
     }
 }

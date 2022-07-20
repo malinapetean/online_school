@@ -1,4 +1,4 @@
-1,Cakes,Cooking, In this course you will learn how to make cakes from scratch.
+1,Cake,Cooking, In this course you will learn how to make cakes from scratch.
 2,Analize,Math,Learn math from A to Z.
 3,Slim Legs,Fitnes,Get in shape
 4,Know Your Body,Anathomy,Fast learning

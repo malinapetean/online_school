@@ -24,5 +24,15 @@ namespace view
         {
 
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel1_Resize(object sender, EventArgs e)
+        {
+
+        }
     }
 }

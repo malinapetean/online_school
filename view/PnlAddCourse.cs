@@ -31,10 +31,12 @@ namespace view
             this.courses = new ControllerCourse();
             this.course = new Course();
             this.course.Id = courses.nextId();
-            this.Size= new Size(650,385);
+            this.Size= new Size(680, 430);
             this.Location = new Point(0, 70);
             this.Name = "PnlAdd";
-            this.BackColor = Color.Lavender;
+            this.BackColor = Color.MediumOrchid;
+            this.Dock = DockStyle.Fill;
+            this.Anchor = AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom | AnchorStyles.Left;
 
             createCourse = new Label();
             createCourse.Location = new System.Drawing.Point(225, 40);
@@ -42,7 +44,7 @@ namespace view
             createCourse.Height = 35;
             createCourse.Text = "Create course";
             Font font = new Font("Times New Roman", 18,FontStyle.Bold);
-            createCourse.ForeColor= Color.DarkSlateBlue;
+            createCourse.ForeColor= Color.Thistle;
             createCourse.Font = font;
             this.Controls.Add(createCourse);
 
@@ -111,8 +113,9 @@ namespace view
             btnCreate.Height = 38;
             btnCreate.Text = "Create";
             btnCreate.Font = new Font("Times New Roman", 12, FontStyle.Bold);
-            btnCreate.BackColor = Color.DarkSlateBlue;
-            btnCreate.ForeColor = Color.Transparent;
+            btnCreate.BackColor = Color.Thistle;
+            btnCreate.ForeColor = Color.MediumOrchid;
+            btnCreate.FlatStyle = FlatStyle.Flat;
             this.Controls.Add(btnCreate);
             this.btnCreate.Click += new EventHandler(btnCreate_Click);
 
@@ -121,9 +124,10 @@ namespace view
             btnCancel.Width = 95;
             btnCancel.Height = 38;
             btnCancel.Text = "Cancel";
-            btnCancel.Font = new Font("Times New Roman", 12, FontStyle.Bold);
-            btnCancel.BackColor = Color.Transparent;
-            btnCancel.ForeColor = Color.DarkSlateBlue;
+            btnCancel.Font = new Font("Times New Roman", 12, FontStyle.Regular);
+            btnCancel.BackColor = Color.MediumOrchid;
+            btnCancel.ForeColor = Color.Thistle;
+            btnCancel.FlatStyle = FlatStyle.Flat;
             this.Controls.Add(btnCancel);
             this.btnCancel.Click += new EventHandler(cancel_Click);
 

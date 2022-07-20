@@ -15,6 +15,8 @@ namespace view
     {
         private ControllerCourse courses;
         private Button btnAdd;
+        private Button signIn;
+        private Button signUp;
        
 
         public Form1()
@@ -25,18 +27,57 @@ namespace view
             
             this.btnAdd = new Button();
             this.btnAdd.Click += new EventHandler(add_Click);
+            this.signIn = new Button();
+            this.signIn.Click += new EventHandler(signIn_Click);
+            this.signUp = new Button();
+            this.signUp.Click += new EventHandler(signUp_Click);
 
-            
-            this.Controls.Add(new PnlHeader());
+
+            this.Controls.Add(new PnlHeader(signIn,signUp,this));
             this.Controls.Add(new PnlMain(courses.getAll(),this));
             this.Controls.Add(new PnlAsside(btnAdd,this));
 
         }
+
+        private void signUp_Click(object sender, EventArgs e)
+        {
+            if (searchPanel("PnlMain"))
+                erasePanel("PnlMain");
+            if (searchPanel("PnlAdd"))
+                erasePanel("PnlAdd");
+            if (searchPanel("PnlUpdate"))
+                erasePanel("PnlUpdate");
+            if (searchPanel("PnlSignIn"))
+                erasePanel("PnlSignIn");
+            this.Controls.Add(new PnlSignUp(this));
+        }
+
+        private void signIn_Click(object sender, EventArgs e)
+        {
+            if (searchPanel("PnlMain"))
+                erasePanel("PnlMain");
+            if (searchPanel("PnlAdd"))
+                erasePanel("PnlAdd");
+            if (searchPanel("PnlUpdate"))
+                erasePanel("PnlUpdate");
+            if (searchPanel("PnlSignUp"))
+                erasePanel("PnlSignUp");
+            this.Controls.Add(new PnlSignIn(this));
+        }
+
         private void add_Click(object sender, EventArgs e)
         {
-            
-            erasePanel("PnlMain");
-            
+
+            if (searchPanel("PnlMain"))
+                erasePanel("PnlMain");
+            if (searchPanel("PnlAdd"))
+                erasePanel("PnlAdd");
+            if (searchPanel("PnlUpdate"))
+                erasePanel("PnlUpdate");
+            if (searchPanel("PnlSignUp"))
+                erasePanel("PnlSignUp");
+            if (searchPanel("PnlSignIn"))
+                erasePanel("PnlSignIn");
             this.Controls.Add(new PnlAddCourse(this));
         }
 
@@ -54,6 +95,19 @@ namespace view
 
             if (cautat != null)
                 this.Controls.Remove(cautat);
+        }
+        public bool searchPanel(String panel)
+        {
+            Control p = null;
+            foreach (Control control in this.Controls)
+            {
+                if (control.Name.Equals(panel))
+                {
+                    p = control;
+                    return true;
+                }
+            }
+            return false;
         }
         private void Form1_Load(object sender, EventArgs e)
         {

@@ -13,6 +13,15 @@
     <Compile Update="FrmMkHome.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FrmMkSignIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmMkSignUp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="FrmMkUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="PnlAddCourse.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -26,6 +35,15 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Update="PnlMain.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="PnlSignIn.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="PnlSignUp.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="PnlUpdate.cs">
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>

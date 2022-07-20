@@ -6,12 +6,12 @@ using System.Text;
 
 namespace Online_school_library.Controllers
 {
-    public class ControllerStudent
+    public class ControllerUser
     {
-        private List<Student> students;
-        public ControllerStudent()
+        private List<User> students;
+        public ControllerUser()
         {
-            students = new List<Student>();
+            students = new List<User>();
             this.load();
         }
         public void load()
@@ -20,13 +20,13 @@ namespace Online_school_library.Controllers
             string txt = "";
             while ((txt = read.ReadLine()) != null)
             {
-                this.students.Add(new Student(txt));
+                this.students.Add(new User(txt));
             }
             read.Close();
         }
         public void display()
         {
-            foreach (Student s in students)
+            foreach (User s in students)
             {
                 Console.WriteLine(s.description());
             }
@@ -34,7 +34,7 @@ namespace Online_school_library.Controllers
         public String toSave()
         {
             String text = "";
-            foreach (Student s in students)
+            foreach (User s in students)
             {
                 text += s.toSave() + "\n";
             }

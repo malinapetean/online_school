@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Online_school_library.Models
 {
-    public class Student
+    public class User
     {
 
         private int id;
@@ -55,7 +55,7 @@ namespace Online_school_library.Models
             txt += "Age: " + this.age + "\n";
             return txt;
         }
-        public Student(string p)
+        public User(string p)
         {
             this.id = int.Parse(p.Split(",")[0]);
             this.firstName = p.Split(",")[1];
