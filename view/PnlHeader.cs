@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Online_school_library.Controllers;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
@@ -12,6 +13,10 @@ namespace view
         private Button signIn;
         private Button signUp;
         private Button btncourses;
+        private ControllerCourse courses;
+
+
+        private Form1 form;
 
         public PnlHeader(Button signIn,Button signUp,Button btnCourses,Form1 form)
         {
@@ -25,15 +30,17 @@ namespace view
             labelName.Size = new System.Drawing.Size(147, 32);
             labelName.TabIndex = 0;
             labelName.Text = "COURSES";
+            labelName.Click += new EventHandler(label_Click);
 
             this.Parent = form;
+            this.form = form;
             this.BackColor = Color.Thistle;
             this.Dock = System.Windows.Forms.DockStyle.Top;
             this.Location = new Point(0, 0);
             this.Name = "PnlHeader";
             this.Size = new Size(this.Parent.Width, 70);
             this.Controls.Add(this.labelName);
-
+            courses = new ControllerCourse();
 
 
             this.signIn = signIn;
@@ -76,6 +83,14 @@ namespace view
             btnCourses.BackColor = Color.MediumOrchid;
             this.Controls.Add(this.btncourses);
         }
+
+        private void label_Click(object sender, EventArgs e)
+        {
+            //this.courses.load();
+            this.form.Controls.Add(new PnlMain(this.courses.getAll(), form));
+            ///this.form.Controls.Remove(this);
+        }
+
         private void buttons_Resize(object sender, EventArgs e)
         {
            signUp.Location = new Point(this.Width - 110, 25);
