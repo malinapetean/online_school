@@ -108,13 +108,10 @@ namespace view
 
                 this.form.Controls.Add(new PnlMain(this.courses.getAll(), form));
                 this.form.Controls.Remove(this);
-
-
             }
             else
-            {
                 MessageBox.Show("Complete all text boxes!");
-            }
+            
         }
     }
 }

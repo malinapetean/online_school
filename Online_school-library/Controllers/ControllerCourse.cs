@@ -30,9 +30,9 @@ namespace Online_school_library.Controllers
             }
             read.Close();
         }
-        public void display()
+        public void display(List<Course> list)
         {
-            foreach (Course c in courses)
+            foreach (Course c in list)
             {
                 Console.WriteLine(c.description());
             }
@@ -104,6 +104,15 @@ namespace Online_school_library.Controllers
                 }
             }
             this.save();
+        }
+        public List<Course> subscribedCouses(List<Enrolment> list)
+        {
+            List<Course> courseList = new List<Course>();
+            foreach (Enrolment e in list)
+            {
+                courseList.Add(getCourseByID(e.Course_Id));
+            }
+            return courseList;
         }
         public void delete(Course c)
         {

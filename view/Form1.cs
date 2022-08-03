@@ -1,4 +1,5 @@
 ﻿using Online_school_library.Controllers;
+using Online_school_library.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,9 +15,12 @@ namespace view
     public partial class Form1 : Form
     {
         private ControllerCourse courses;
+        private ControllerEnrolment ctrlenr;
         private Button btnAdd;
         private Button signIn;
         private Button signUp;
+        private Button btncourses;
+        private Student student= new Student("student, 1352, Luca, Alex, alex@yahoo.com, 11234, 34");
        
 
         public Form1()
@@ -24,19 +28,37 @@ namespace view
             InitializeComponent();
 
             this.courses = new ControllerCourse();
-            
-            this.btnAdd = new Button();
-            this.btnAdd.Click += new EventHandler(add_Click);
+            this.ctrlenr = new ControllerEnrolment();
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.WindowState = FormWindowState.Maximized;
+            this.MinimizeBox = false;
+            this.MaximizeBox = false;
+
+            //this.btnAdd = new Button();
+            //this.btnAdd.Click += new EventHandler(add_Click);
             this.signIn = new Button();
             this.signIn.Click += new EventHandler(signIn_Click);
             this.signUp = new Button();
             this.signUp.Click += new EventHandler(signUp_Click);
-
-
-            this.Controls.Add(new PnlHeader(signIn,signUp,this));
+            this.btncourses = new Button();
+            this.btncourses.Click += new EventHandler(courses_Click);
+            this.Controls.Add(new PnlHeader(signIn,signUp, btncourses,this));
             this.Controls.Add(new PnlMain(courses.getAll(),this));
-            this.Controls.Add(new PnlAsside(btnAdd,this));
+            ///this.Controls.Add(new PnlAsside(btnAdd,this));
 
+        }
+
+        private void courses_Click(object sender, EventArgs e)
+        {
+            if (searchPanel("PnlMain"))
+                erasePanel("PnlMain");
+            if (searchPanel("PnlAdd"))
+                erasePanel("PnlAdd");
+            if (searchPanel("PnlUpdate"))
+                erasePanel("PnlUpdate");
+            if (searchPanel("PnlSignIn"))
+                erasePanel("PnlSignIn");
+            this.Controls.Add(new PnlMain(courses.subscribedCouses(ctrlenr.enrolledCourses(student)),this));
         }
 
         private void signUp_Click(object sender, EventArgs e)

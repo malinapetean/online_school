@@ -16,11 +16,19 @@ namespace Online_school_library.Controllers
         }
         public void load()
         {
-            StreamReader read = new StreamReader(@"D:\mycode\csharp\Mostenirea\Online_school-library\Online_school-library\Resources\students.txt");
+            StreamReader read = new StreamReader(@"D:\mycode\csharp\projects\Online_school-library\Online_school-library\Resources\students.txt");
             string txt = "";
             while ((txt = read.ReadLine()) != null)
             {
-                this.students.Add(new User(txt));
+                switch(txt.Split(",")[0])
+                {
+                    case "student":
+                        students.Add(new Student(txt));
+                        break;
+                    case "teacher":
+                        students.Add(new Teacher(txt));
+                        break;
+                }
             }
             read.Close();
         }
@@ -42,11 +50,31 @@ namespace Online_school_library.Controllers
         }
         public void save()
         {
-            StreamWriter write = new StreamWriter(@"D:\mycode\csharp\Mostenirea\Online_school-library\Online_school-library\Resources\students.txt");
+            StreamWriter write = new StreamWriter(@"D:\mycode\csharp\projects\Online_school-library\Online_school-library\Resources\students.txt");
             write.Write(this.toSave());
             write.Close();
         }
 
+        public bool exist(User s)
+        {
+            foreach(User u in students)
+            {
+                if(u.Id.Equals(s.Id))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public bool Add(User s)
+        {
+            if(exist(s)==false)
+            {
+                this.students.Add(s);
+                return true;
+            }
+            return false;
+        }
 
     }
 }

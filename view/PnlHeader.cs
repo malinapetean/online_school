@@ -11,8 +11,9 @@ namespace view
         private Label labelName;
         private Button signIn;
         private Button signUp;
+        private Button btncourses;
 
-        public PnlHeader(Button signIn,Button signUp,Form1 form)
+        public PnlHeader(Button signIn,Button signUp,Button btnCourses,Form1 form)
         {
             labelName = new Label();
             labelName.AutoSize = true;
@@ -41,7 +42,7 @@ namespace view
             signIn.Font = new Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             signIn.ForeColor = SystemColors.ActiveCaptionText;
             ///signIn.Location = new Point(this.Width-200, 25);
-            signIn.Name = "brnSignIn";
+            signIn.Name = "btnSignIn";
             signIn.Size = new Size(94, 29);
             signIn.TabIndex = 0;
             signIn.Text = "Sign In";
@@ -56,21 +57,32 @@ namespace view
             signUp.Font = new Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             signUp.ForeColor = SystemColors.ActiveCaptionText;
             ///signUp.Location = new Point(this.Width-100, 25);
-            signUp.Name = "brnSignup";
+            signUp.Name = "btnSignup";
             signUp.Size = new Size(94, 29);
             signUp.TabIndex = 0;
             signUp.Text = "Sign Up";
             signUp.BackColor = Color.MediumOrchid;
             this.Controls.Add(this.signUp);
+
+            this.btncourses = btnCourses;
+            btnCourses.AutoSize = true;
+            btnCourses.Font = new Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            btnCourses.FlatStyle = FlatStyle.Flat;
+            btnCourses.ForeColor = SystemColors.ActiveCaptionText;
+            btnCourses.Name = "btnCourses";
+            btnCourses.Size = new Size(105, 29);
+            btnCourses.TabIndex = 0;
+            btnCourses.Text = "My Courses";
+            btnCourses.BackColor = Color.MediumOrchid;
+            this.Controls.Add(this.btncourses);
         }
         private void buttons_Resize(object sender, EventArgs e)
         {
            signUp.Location = new Point(this.Width - 110, 25);
            signIn.Location = new Point(this.Width - 210, 25);
+           btncourses.Location = new Point(this.Width - 333, 25);
+
         }
-        private void signIn_Click(object sender, EventArgs e)
-        {
-           
-        }
+        
     }
 }

@@ -14,7 +14,7 @@ namespace view
         private ControllerCourse control;
         private Label name;
         private Label department;
-
+        private Student student = new Student("student, 1352, Luca, Alex, alex@yahoo.com, 11234, 34");
         private Form1 form;
 
         public PnlCourseCard(Course course, Form1 form)
@@ -44,13 +44,14 @@ namespace view
             department.ForeColor = Color.Black;
             this.Controls.Add(department);
 
-            this.Click += new EventHandler(card_Click);
+            this.name.Click += new EventHandler(card_Click);
+
         }
 
         private void card_Click(object sender, EventArgs e)
         {
             this.form.erasePanel("PnlMain");
-            this.form.Controls.Add(new PnlUpdate(form, control.getCourseByID(course.Id)));
+            this.form.Controls.Add(new PnlDetails(student,form, control.getCourseByID(course.Id)));
         }
     }
 }

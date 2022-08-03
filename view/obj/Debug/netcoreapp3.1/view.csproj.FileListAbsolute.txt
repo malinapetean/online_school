@@ -54,4 +54,4 @@ D:\mycode\csharp\projects\Online_school-library\view\obj\Debug\netcoreapp3.1\vie
 D:\mycode\csharp\projects\Online_school-library\view\obj\Debug\netcoreapp3.1\view.dll
 D:\mycode\csharp\projects\Online_school-library\view\obj\Debug\netcoreapp3.1\view.pdb
 D:\mycode\csharp\projects\Online_school-library\view\obj\Debug\netcoreapp3.1\view.genruntimeconfig.cache
-D:\mycode\csharp\projects\Online_school-library\view\obj\Debug\netcoreapp3.1\view.csproj.CopyComplete
+D:\mycode\csharp\projects\Online_school-library\view\obj\Debug\netcoreapp3.1\view.FrmMkDescription.resources

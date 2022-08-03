@@ -12,8 +12,13 @@ namespace Online_school_library.Models
         private string lastName = "";
         private string email = "";
         private string password = "";
-        private int age;
+        private string tip = "";
 
+        public string Tip
+        {
+            get => this.tip;
+            set => this.tip = value;
+        }
         public int Id
         {
             get => this.id;
@@ -39,36 +44,32 @@ namespace Online_school_library.Models
             get => this.password;
             set => this.password = value;
         }
-        public int Age
-        {
-            get => this.age;
-            set => this.age = value;
-        }
-        public string description()
+       
+        public virtual string description()
         {
             string txt = "";
+            txt += "Type: " + this.tip + "\n";
             txt += "Id: " + this.id + "\n";
             txt += "First name: " + this.firstName + "\n";
             txt += "Last name: " + this.lastName + "\n";
             txt += "Email: " + this.email + "\n";
             txt += "Parola:" + this.password + "\n";
-            txt += "Age: " + this.age + "\n";
+           
             return txt;
         }
         public User(string p)
         {
-            this.id = int.Parse(p.Split(",")[0]);
-            this.firstName = p.Split(",")[1];
-            this.lastName = p.Split(",")[2];
-            this.email = p.Split(",")[3];
-            this.password = p.Split(",")[4];
-            this.age = int.Parse(p.Split(",")[5]);
-
+            this.tip = p.Split(",")[0];
+            this.id = int.Parse(p.Split(",")[1]);
+            this.firstName = p.Split(",")[2];
+            this.lastName = p.Split(",")[3];
+            this.email = p.Split(",")[4];
+            this.password = p.Split(",")[5];
         }
-        public string toSave()
+        public virtual string toSave()
         {
             string text = "";
-            text += this.id + "," + this.firstName + "," + this.lastName + "," + this.email + "," + this.password + "," + this.age;
+            text +=this.tip + "," + this.id + "," + this.firstName + "," + this.lastName + "," + this.email + "," + this.password;
             return text;
         }
     }
