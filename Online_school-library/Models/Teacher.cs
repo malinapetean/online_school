@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Online_school_library.Models
 {
-    class Teacher:User
+   public  class Teacher:User
     {
         private string materia = "";
         public Teacher(string txt):base(txt)
@@ -29,11 +29,17 @@ namespace Online_school_library.Models
             txt += "Materia pe care o preda: " + this.materia + "\n";
             return txt;
         }
-        public override string toSave()
+        public override string ToString()
         {
             string text = "";
             text += this.Tip + "," + this.Id + "," + this.First_Name + "," + this.Last_Name + "," + this.Email + "," + this.Password+","+this.materia;
             return text;
+        }
+        public override bool Equals(object obj)
+        {
+            Teacher t = obj as Teacher;
+
+            return this.Id == t.Id;
         }
     }
 }

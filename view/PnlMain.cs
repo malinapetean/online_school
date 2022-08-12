@@ -15,12 +15,14 @@ namespace view
         private List<PnlCourseCard> cards;
         private ControllerCourse control;
         private Form1 form;
+        //private User user= new Teacher("teacher,10,Petean,Anamaria,malinapetean@gmail.com,1234,matematica");
         public PnlMain(List<Course> courses, Form1 form)
         {
             this.cards = new List<PnlCourseCard>();
             this.control = new ControllerCourse();
             this.form = form;
             base.Parent = form;
+            
             this.courses = courses;
             this.Size= new Size(650,385);
             this.Location = new Point(0,70);
@@ -37,22 +39,7 @@ namespace view
         
         private void main_Resize(object sender, EventArgs e)
         {
-            ////int nr = this.Parent.Width / 280;
-            ////createCards(nr);
-            //x++;
-            //;
-
-            //if (this.Width > 640)
-            //{
-            //    Debug.WriteLine("tableta");
-            //}
-            //if (this.Width > 920)
-            //{
-            //    Debug.WriteLine("pc");
-            //}
-
             
-
             if (this.Width < 460+150)
             {
                 ///Debug.WriteLine("mobil");
@@ -88,6 +75,8 @@ namespace view
             this.Controls.Clear();
            
             int x = 60, y = 100, ct = 0;
+     
+
             foreach (Course c in courses)
             {
                 ct++;
@@ -107,6 +96,9 @@ namespace view
                     this.AutoScroll = true;
                 }
             }
+
         }
+        
+
     }
 }

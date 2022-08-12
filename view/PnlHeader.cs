@@ -1,4 +1,5 @@
 ﻿using Online_school_library.Controllers;
+using Online_school_library.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -14,11 +15,12 @@ namespace view
         private Button signUp;
         private Button btncourses;
         private ControllerCourse courses;
-
+        private Button btnAdd;
 
         private Form1 form;
+        private User user;
 
-        public PnlHeader(Button signIn,Button signUp,Button btnCourses,Form1 form)
+        public PnlHeader(Button signIn,Button signUp,Button btnCourses,Button Add,Form1 form,User user)
         {
             labelName = new Label();
             labelName.AutoSize = true;
@@ -34,6 +36,7 @@ namespace view
 
             this.Parent = form;
             this.form = form;
+            this.user = user;
             this.BackColor = Color.Thistle;
             this.Dock = System.Windows.Forms.DockStyle.Top;
             this.Location = new Point(0, 0);
@@ -82,20 +85,42 @@ namespace view
             btnCourses.Text = "My Courses";
             btnCourses.BackColor = Color.MediumOrchid;
             this.Controls.Add(this.btncourses);
+
+            if(user is Teacher)
+            {
+                this.btnAdd = Add;
+                Add.AutoSize = true;
+                Add.Font = new Font("Times New Roman", 12F, FontStyle.Bold);
+                Add.ForeColor = Color.Thistle;
+                Add.Name = "btnAdd";
+                Add.Size = new Size(180, 34);
+                Add.FlatStyle = FlatStyle.Popup;
+                Add.Text = "Add New Course+";
+                Add.BackColor = Color.MediumOrchid;
+                this.Controls.Add(this.btnAdd);
+            }
+            
         }
 
         private void label_Click(object sender, EventArgs e)
         {
             //this.courses.load();
+
+            this.form.erasePanel("PnlMain");
+            this.form.erasePanel("PnlUpdate");
+            this.form.erasePanel("PnlDetails");
+            
             this.form.Controls.Add(new PnlMain(this.courses.getAll(), form));
-            ///this.form.Controls.Remove(this);
+           
         }
 
         private void buttons_Resize(object sender, EventArgs e)
         {
-           signUp.Location = new Point(this.Width - 110, 25);
-           signIn.Location = new Point(this.Width - 210, 25);
-           btncourses.Location = new Point(this.Width - 333, 25);
+            signUp.Location = new Point(this.Width - 110, 25);
+            signIn.Location = new Point(this.Width - 210, 25);
+            btncourses.Location = new Point(this.Width - 333, 25);
+            if(user is Teacher)
+                btnAdd.Location = new Point(this.Width - 520, 25);
 
         }
         

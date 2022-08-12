@@ -14,7 +14,7 @@ namespace view
         private ControllerCourse control;
         private Label name;
         private Label department;
-        private Student student = new Student("student, 1352, Luca, Alex, alex@yahoo.com, 11234, 34");
+        private User student = new Teacher("teacher,10,Petean,Anamaria,malinapetean@gmail.com,1234,matematica");
         private Form1 form;
 
         public PnlCourseCard(Course course, Form1 form)

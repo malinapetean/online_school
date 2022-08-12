@@ -8,5 +8,7 @@ student,6697,Vally,Clere,vclere6@engadget.com,343Q0R7d,22
 student,5859,Garwin,Jeanneau,gjeanneau7@smugmug.com,HuV4vaVzk9,31
 student,4193,Eryn,Tighe,etighe9@hostgator.com,cTOyPN,20
 student,2684,Tanner,Edelheid,tedelheid8@shinystat.com,x4LMGnaqvO,27
-teacher,0,Petean,Anamaria,malinapetean@gmail.com,1234,matematica
+teacher,10,Petean,Anamaria,malinapetean@gmail.com,1234,matematica
+teacher,1,Popescu,Andrei,andreinpopescu@gmail.com,12345678,sport
+teacher,2,Pop,Anca,ancaPop@yahoo.com,12341234,biologie
 student,1352,Luca,Alex,alex@yahoo.com,11234,34

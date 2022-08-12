@@ -37,19 +37,19 @@ namespace Online_school_library.Controllers
                 Console.WriteLine(c.description());
             }
         }
-        public String toSave()
+        public override string ToString()
         {
             String text = "";
             foreach (Course c in courses)
             {
-                text += c.toSave() + "\n";
+                text += c.ToString() + "\n";
             }
             return text;
         }
         public void save()
         {
             StreamWriter write = new StreamWriter(@"D:\mycode\csharp\projects\Online_school-library\Online_school-library\Resources\courses.txt");
-            write.Write(this.toSave());
+            write.Write(this);
             write.Close();
         }
         public List<Course> getAll()
@@ -114,15 +114,22 @@ namespace Online_school_library.Controllers
             }
             return courseList;
         }
-        public void delete(Course c)
+        public List<Course> myCourses(User u)
         {
-            for (int i = 0; i < courses.Count; i++)
+            List<Course> courselist = new List<Course>();
+            foreach(Course c in courses)
             {
-                if (courses[i].Id.Equals(c.Id))
+                if(c.TeacherID.Equals(u.Id))
                 {
-                    courses.RemoveAt(i);
+                    courselist.Add(c);
                 }
             }
+            return courselist;
+        }
+        public void delete(Course c)
+        {
+
+            this.courses.Remove(c);
             this.save();
         }
     }

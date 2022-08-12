@@ -32,11 +32,17 @@ namespace Online_school_library.Models
             return txt;
         }
 
-        public override string toSave()
+        public override string ToString()
         {
             string text = "";
             text += this.Tip + "," + this.Id + "," + this.First_Name + "," + this.Last_Name + "," + this.Email + "," + this.Password + "," + this.age;
             return text;
+        }
+        public override bool Equals(object obj)
+        {
+            Student s = obj as Student;
+
+            return this.Id == s.Id;
         }
     }
 }

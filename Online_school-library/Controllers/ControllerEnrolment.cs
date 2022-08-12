@@ -37,19 +37,19 @@ namespace Online_school_library.Controllers
                 Console.WriteLine(e.description());
 
         }
-        public string toSave()
+        public override string ToString()
         {
             string text = "";
             foreach (Enrolment e in enrolments)
             {
-                text += e.toSave() + "\n";
+                text += e.ToString() + "\n";
             }
             return text;
         }
         public void save()
         {
             StreamWriter write = new StreamWriter(@"D:\mycode\csharp\projects\Online_school-library\Online_school-library\Resources\enrolments.txt");
-            write.Write(this.toSave());
+            write.Write(this.ToString());
             write.Close();
         }
         public bool exist(Enrolment e)
@@ -63,31 +63,38 @@ namespace Online_school_library.Controllers
             }
             return false;
         }
-        public bool existence(Student s, Course c)
+        public bool existence(User s, Course c)
         {
-            foreach(Enrolment e in enrolments)
+            if (s is Student)
             {
-                if(e.Course_Id.Equals(c.Id) && e.Student_Id.Equals(s.Id))
+                foreach (Enrolment e in enrolments)
                 {
-                    return true;
+                    if (e.Course_Id.Equals(c.Id) && e.Student_Id.Equals(s.Id))
+                    {
+                        return true;
+                    }
                 }
             }
             return false;
         }
 
-        public List<Enrolment> enrolledCourses(Student s)
+        public List<Enrolment> enrolledCourses(User s)
         {
-            List<Enrolment> list = new List<Enrolment>();
-            foreach(Enrolment e in enrolments)
+            if(s is Student)
             {
-                if(e.Student_Id.Equals(s.Id))
+                List<Enrolment> list = new List<Enrolment>();
+                foreach (Enrolment e in enrolments)
                 {
-                    list.Add(e);
+                    if (e.Student_Id.Equals(s.Id))
+                    {
+                        list.Add(e);
+                    }
+
                 }
-
+                return list;
             }
-            return list;
 
+            return null;
         }
         public bool addEnroll(Enrolment e)
         {

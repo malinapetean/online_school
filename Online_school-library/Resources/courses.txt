@@ -1,7 +1,8 @@
-1,Cake,Cooking, In this course you will learn how to make cakes from scratch.
-2,Analize,Math,Learn math from A to Z.
-3,Slim Legs,Fitnes,Get in shape
-4,Know Your Body,Anathomy,Fast learning
-5,C# Basics,Programming,Be a genius
-6,Daily Tasks,Organization,Get yourself together
-7,blaaaa,nssss,sssss
+1,Cake,Cooking,In this course you will learn how to make cakes from scratch.,10
+2,Analize,Math,Learn math from A to Z.,10
+3,Slim Legs,Fitnes,Get in shape,2
+4,Know Your Body,Anathomy,Fast learning,1
+5,C# Basics,Programming,EEWWEQEQWE,10
+6,Daily Tasks,Organization,Get yourself together,1
+7,blaaaa,nssss,sssss,2
+8,vbvb,aaaa,eeeeee,10

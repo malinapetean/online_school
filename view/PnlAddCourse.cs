@@ -15,29 +15,34 @@ namespace view
         private Label id;
         private Label department;
         private Label description;
+        private Label creator;
         private TextBox txtId;
         private TextBox txtName;
         private TextBox txtDepartment;
         private TextBox txtDescription;
+        private TextBox txtcreator;
         private Button btnCreate;
         private Button btnCancel;
         private Course course;
         private ControllerCourse courses;
         private Form1 form;
 
-        public PnlAddCourse(Form1 form)
+        private User user;
+
+        public PnlAddCourse(Form1 form,User user)
         {
             this.form = form;
             this.courses = new ControllerCourse();
             this.course = new Course();
+            this.user = user;
             this.course.Id = courses.nextId();
             this.Size= new Size(680, 430);
             this.Location = new Point(0, 70);
             this.Name = "PnlAdd";
             this.BackColor = Color.MediumOrchid;
-            this.Dock = DockStyle.Fill;
+            
             this.Anchor = AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Bottom | AnchorStyles.Left;
-
+            this.Dock = DockStyle.Fill;
             createCourse = new Label();
             createCourse.Location = new System.Drawing.Point(225, 40);
             createCourse.Width = 187; 
@@ -107,8 +112,21 @@ namespace view
             txtDescription.Height = 25;
             this.Controls.Add(txtDescription);
 
+            creator = new Label();
+            creator.Location = new Point(200, 315);
+            creator.Size = new Size(103, 22);
+            creator.Text = "Creator";
+            creator.Font = labels;
+            this.Controls.Add(creator);
+
+            txtcreator = new TextBox();
+            txtcreator.Location = new Point(200, 340);
+            txtcreator.Size = new Size(285,25);
+            txtcreator.Text = user.First_Name +" "+ user.Last_Name;
+            this.Controls.Add(txtcreator);
+
             btnCreate = new Button();
-            btnCreate.Location = new System.Drawing.Point(240, 330);
+            btnCreate.Location = new System.Drawing.Point(240, 380);
             btnCreate.Width = 95;
             btnCreate.Height = 38;
             btnCreate.Text = "Create";
@@ -120,7 +138,7 @@ namespace view
             this.btnCreate.Click += new EventHandler(btnCreate_Click);
 
             btnCancel = new Button();
-            btnCancel.Location = new Point(355, 330);
+            btnCancel.Location = new Point(355, 380);
             btnCancel.Width = 95;
             btnCancel.Height = 38;
             btnCancel.Text = "Cancel";
@@ -137,19 +155,33 @@ namespace view
         {
 
 
-            if (!(txtName.Text.Equals("") || txtDepartment.Text.Equals("") || txtDescription.Text.Equals("")))
+            if (!(txtName.Text.Equals("") || txtDepartment.Text.Equals("") || txtDescription.Text.Equals("")|| txtcreator.Text.Equals("")))
             {
 
                 this.course.Name = txtName.Text;
                 this.course.Department = txtDepartment.Text;
                 this.course.Detalis = txtDescription.Text;
+                this.course.TeacherID = user.Id;
+                int ok = 0;
+                foreach(Course c in courses.myCourses(user))
+                {
+                    if(c.Name.Equals(course.Name))
+                    {
+                        MessageBox.Show("You already have a course with this name");
+                        ok = 1;
+                    }
+                    
 
-                this.courses.addCourse(course);
+                }
+                if(ok==0)
+                {
+                    this.courses.addCourse(course);
+                    MessageBox.Show("Course added succesfully");
+                }
                 this.courses.save();
                 this.courses.load();
                 this.form.Controls.Add(new PnlMain(this.courses.getAll(), form));
                 this.form.Controls.Remove(this);
-
 
             }
             else

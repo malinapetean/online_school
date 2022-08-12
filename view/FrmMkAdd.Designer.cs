@@ -41,11 +41,15 @@ namespace view
             this.txt_name = new System.Windows.Forms.TextBox();
             this.label_course_name = new System.Windows.Forms.Label();
             this.label_create_course = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txt_description);
             this.panel1.Controls.Add(this.label_description);
             this.panel1.Controls.Add(this.btn_cancel);
@@ -66,9 +70,9 @@ namespace view
             // txt_description
             // 
             this.txt_description.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txt_description.Location = new System.Drawing.Point(258, 319);
+            this.txt_description.Location = new System.Drawing.Point(259, 319);
             this.txt_description.Name = "txt_description";
-            this.txt_description.Size = new System.Drawing.Size(285, 25);
+            this.txt_description.Size = new System.Drawing.Size(283, 25);
             this.txt_description.TabIndex = 21;
             // 
             // label_description
@@ -86,7 +90,7 @@ namespace view
             this.btn_cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_cancel.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btn_cancel.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.btn_cancel.Location = new System.Drawing.Point(422, 387);
+            this.btn_cancel.Location = new System.Drawing.Point(417, 411);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(97, 38);
             this.btn_cancel.TabIndex = 19;
@@ -99,7 +103,7 @@ namespace view
             this.btn_create.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_create.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_create.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_create.Location = new System.Drawing.Point(322, 387);
+            this.btn_create.Location = new System.Drawing.Point(298, 411);
             this.btn_create.Name = "btn_create";
             this.btn_create.Size = new System.Drawing.Size(94, 38);
             this.btn_create.TabIndex = 18;
@@ -173,6 +177,22 @@ namespace view
             this.label_create_course.TabIndex = 11;
             this.label_create_course.Text = "Create course";
             // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(258, 347);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 25);
+            this.label2.TabIndex = 23;
+            this.label2.Text = "Creator";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(259, 375);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(284, 27);
+            this.textBox1.TabIndex = 24;
+            // 
             // FrmMkAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -201,5 +221,7 @@ namespace view
         private System.Windows.Forms.TextBox txt_name;
         private System.Windows.Forms.Label label_course_name;
         private System.Windows.Forms.Label label_create_course;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label2;
     }
 }

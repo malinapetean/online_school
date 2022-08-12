@@ -20,7 +20,7 @@ namespace view
         private Button signIn;
         private Button signUp;
         private Button btncourses;
-        private Student student= new Student("student, 1352, Luca, Alex, alex@yahoo.com, 11234, 34");
+        private User user= new Teacher("teacher,10,Petean,Anamaria,malinapetean@gmail.com,1234,matematica");
        
 
         public Form1()
@@ -42,7 +42,13 @@ namespace view
             this.signUp.Click += new EventHandler(signUp_Click);
             this.btncourses = new Button();
             this.btncourses.Click += new EventHandler(courses_Click);
-            this.Controls.Add(new PnlHeader(signIn,signUp, btncourses,this));
+            if(user is Teacher)
+            {
+                this.btnAdd = new Button();
+                this.btnAdd.Click += new EventHandler(add_Click);
+            }
+            
+            this.Controls.Add(new PnlHeader(signIn,signUp, btncourses,btnAdd,this,user));
             this.Controls.Add(new PnlMain(courses.getAll(),this));
             ///this.Controls.Add(new PnlAsside(btnAdd,this));
 
@@ -58,7 +64,15 @@ namespace view
                 erasePanel("PnlUpdate");
             if (searchPanel("PnlSignIn"))
                 erasePanel("PnlSignIn");
-            this.Controls.Add(new PnlMain(courses.subscribedCouses(ctrlenr.enrolledCourses(student)),this));
+            if(user is Student)
+            {
+                this.Controls.Add(new PnlMain(courses.subscribedCouses(ctrlenr.enrolledCourses(user)),this));
+            }
+            else if(user is Teacher)
+            {
+                this.Controls.Add(new PnlMain(courses.myCourses(user), this));
+            }
+            
         }
 
         private void signUp_Click(object sender, EventArgs e)
@@ -100,7 +114,7 @@ namespace view
                 erasePanel("PnlSignUp");
             if (searchPanel("PnlSignIn"))
                 erasePanel("PnlSignIn");
-            this.Controls.Add(new PnlAddCourse(this));
+            this.Controls.Add(new PnlAddCourse(this,user));
         }
 
         public void erasePanel(String name)

@@ -17,24 +17,26 @@ namespace view
         private Label deparment;
         private Label departmentName;
         private Label subscribedStudents;
+        private Label creator;
         private TextBox txtDescription;
         private TextBox txtSubscribed;
-        private Button btnEnroll;
-        private Button btnUnenroll;
+        private Button btnMultiTask;
         private Button btnReturn;
 
         private ControllerCourse courses;
         private ControllerEnrolment enrolments;
+        private ControllerUser students;
         private Form1 form;
         private Course c;
-        private Student student = new Student("student, 1352, Luca, Alex, alex@yahoo.com, 11234, 34");
+        private User user;
 
-        public PnlDetails(Student student,Form1 form, Course c)
+        public PnlDetails(User user,Form1 form, Course c)
         {
             
             courses = new ControllerCourse();
             enrolments = new ControllerEnrolment();
-            this.student = student;
+            students = new ControllerUser();
+            this.user = user;
             this.c = c;
             this.form = form;
             base.Parent = form;
@@ -56,6 +58,16 @@ namespace view
             courseDetails.ForeColor = Color.Black;
             courseDetails.BackColor = Color.Plum;
             this.Controls.Add(courseDetails);
+
+            creator = new Label();
+            creator.Font = new Font("Times New Roman", 9);
+            creator.Location = new Point(28, 114);
+            creator.Size = new Size(131,17);
+            creator.Text = "By " + students.getTeacerById(c.TeacherID).Last_Name.ToString();
+
+            creator.ForeColor = Color.Black;
+            creator.BackColor = Color.Plum;
+            this.Controls.Add(creator);
 
             course = new Label();
             course.Font = labels;
@@ -143,52 +155,28 @@ namespace view
             this.Controls.Add(btnReturn);
             btnReturn.Click += new EventHandler(return_Click);
 
-            if (enrolments.existence(student, c) == true)
-            {
-                
-                btnUnenroll = new Button();
-                btnUnenroll.Location = new Point(28, 388);
-                btnUnenroll.Size = new Size(120, 40);
-                btnUnenroll.FlatStyle = FlatStyle.Flat;
-                btnUnenroll.Text = "Unenroll";
-                btnUnenroll.Font = font;
-                btnUnenroll.ForeColor = Color.Black;
-                btnUnenroll.BackColor = Color.Thistle;
-                this.Controls.Add(btnUnenroll);
+            
 
-                btnUnenroll.Click += new EventHandler(Unenroll_Click);
-            }
-            else
-            {
-                btnEnroll = new Button();
-                btnEnroll.Location = new Point(28, 388);
-                btnEnroll.Size = new Size(95, 40);
-                btnEnroll.FlatStyle = FlatStyle.Flat;
-                btnEnroll.Text = "Enroll";
-                btnEnroll.Font = font;
-                btnEnroll.ForeColor = Color.Black;
-                btnEnroll.BackColor = Color.Thistle;
-                this.Controls.Add(btnEnroll);
-
-                btnEnroll.Click += new EventHandler(enroll_Click);
-            }
+            createButtons(user,c);
         }
 
         private void Unenroll_Click(object sender, EventArgs e)
         {
-            if(enrolments.existence(student,c)==true)
+            
+            if (enrolments.existence(user, c) == true)
             {
-                this.enrolments.deleteEnroll(student, c);
-                this.enrolments.save();
-                this.courses.load();
-                this.form.Controls.Add(new PnlMain(this.courses.getAll(), form));
-                this.form.Controls.Remove(this);
+                 this.enrolments.deleteEnroll(user as Student, c);
+                 this.enrolments.save();
+                 this.courses.load();
+                 this.form.Controls.Add(new PnlMain(this.courses.getAll(), form));
+                 this.form.Controls.Remove(this);
+                
             }
         }
 
         private void enroll_Click(object sender, EventArgs e)
         {
-            Enrolment enr = new Enrolment(this.enrolments.nextId(), student.Id, this.c.Id);
+            Enrolment enr = new Enrolment(this.enrolments.nextId(), user.Id, this.c.Id);
 
             this.enrolments.addEnroll(enr);
             this.enrolments.save();
@@ -204,6 +192,72 @@ namespace view
             this.courses.load();
             this.form.Controls.Remove(this);
         }
+        private void edit_Click(object sender, EventArgs e)
+        {
+            this.form.Controls.Add(new PnlUpdate( form,c));
+            this.courses.load();
+            this.form.Controls.Remove(this);
+        }
+
+        private void deleteButton(String name)
+        {
+            Control cautat = null;
+
+            foreach (Control aux in this.Controls)
+            {
+                if (aux.Name.Equals(name))
+                {
+                    cautat = aux;
+                }
+            }
+
+            if (cautat != null)
+                this.Controls.Remove(cautat);
+        
+        }
+        //create buttons
+        //am facut un buton care face enroll, unenroll si edit dupa tipul de user
+
+        public void createButtons(User user, Course c)
+        {
+            
+            btnMultiTask = new Button();
+            btnMultiTask.Location = new Point(28, 388);
+            btnMultiTask.Size = new Size(120, 40);
+            btnMultiTask.FlatStyle = FlatStyle.Flat;
+            btnMultiTask.Font = new Font("Times New Roman", 14, FontStyle.Bold);
+            btnMultiTask.ForeColor = Color.Black;
+            btnMultiTask.BackColor = Color.Thistle;
+            btnMultiTask.Name = "BtnMultiTask";
+            this.Controls.Add(btnMultiTask);
+            if(user is Student)
+            {
+                if(enrolments.existence(user,c)==true)
+                {
+                    btnMultiTask.Text = "UnEnroll";
+                    btnMultiTask.Click += new EventHandler(Unenroll_Click);
+                }
+                else
+                {
+                    btnMultiTask.Text = "Enroll";
+                    btnMultiTask.Click += new EventHandler(enroll_Click);
+                }
+            }
+            else if(user is Teacher)
+            {
+                if(user.Id.Equals(c.TeacherID))
+                {
+                    btnMultiTask.Text = "Edit";
+                    btnMultiTask.Click += new EventHandler(edit_Click);
+                }
+                else
+                {
+                    deleteButton("BtnMultiTask");
+                    btnMultiTask.Enabled = false;
+                }
+            }
+        }
+
 
 
     }

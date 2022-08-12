@@ -47,11 +47,17 @@ namespace Online_school_library.Models
             this.courseId = course_id;
         }
 
-        public string toSave()
+        public override string ToString ()
         {
             string txt = "";
             txt += this.enrolmentId + "," + this.studentId + "," + this.courseId;
             return txt;
+        }
+        public override bool Equals(object obj)
+        {
+            Enrolment e = obj as Enrolment;
+
+            return this.enrolmentId == e.enrolmentId;
         }
     }
 }

@@ -22,10 +22,11 @@ namespace view
         private Button update;
         private Button delete;
         private Button cancel;
-        private Button enroll;
         private Course course;
         private ControllerCourse courses;
         private Form1 form;
+
+        private User user = new Teacher("teacher,10,Petean,Anamaria,malinapetean@gmail.com,1234,matematica");
 
         public PnlUpdate(Form1 form,Course course)
         {
@@ -154,22 +155,32 @@ namespace view
 
         private void update_Click(object sender, EventArgs e)
         {
-            if (!(txtName.Text.Equals("") || txtDepartment.Text.Equals("") || txtDescription.Text.Equals("")))
+            int ok = 0;
+            foreach(Course c in courses.myCourses(user))
+            {
+                if(c.Name.Equals(course.Name))
+                {
+                    MessageBox.Show("You can't change the name like this because you already have a course with this name");
+                    ok = 1;
+                }
+
+            }
+            if (!(txtName.Text.Equals("") || txtDepartment.Text.Equals("") || txtDescription.Text.Equals(""))&& ok==0)
             {
                 this.courses.updateCourse(this.course);
                 this.courses.save();
                 this.courses.load();
-                this.form.Controls.Add(new PnlMain(this.courses.getAll(), form));
+                this.form.Controls.Add(new PnlDetails(user, form,course));
                 this.form.Controls.Remove(this);
 
             }
-            else
+            else if(txtName.Text.Equals("") || txtDepartment.Text.Equals("") || txtDescription.Text.Equals(""))
                 MessageBox.Show(checkErrors());
         }
         private void cancel_Click(object sender, EventArgs e)
         {
             
-            this.form.Controls.Add(new PnlMain(this.courses.getAll(), form));
+            this.form.Controls.Add(new PnlDetails(user, form,course));
             this.courses.load();
             this.form.Controls.Remove(this);
         }

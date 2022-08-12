@@ -66,11 +66,16 @@ namespace Online_school_library.Models
             this.email = p.Split(",")[4];
             this.password = p.Split(",")[5];
         }
-        public virtual string toSave()
+        public override string ToString()
         {
             string text = "";
             text +=this.tip + "," + this.id + "," + this.firstName + "," + this.lastName + "," + this.email + "," + this.password;
             return text;
+        }
+        public override bool Equals(object obj)
+        {
+            User u = obj as User;
+            return this.id == u.id;
         }
     }
 }

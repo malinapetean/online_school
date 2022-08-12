@@ -39,19 +39,19 @@ namespace Online_school_library.Controllers
                 Console.WriteLine(s.description());
             }
         }
-        public String toSave()
+        public override string ToString()
         {
             String text = "";
             foreach (User s in students)
             {
-                text += s.toSave() + "\n";
+                text += s.ToString() + "\n";
             }
             return text;
         }
         public void save()
         {
             StreamWriter write = new StreamWriter(@"D:\mycode\csharp\projects\Online_school-library\Online_school-library\Resources\students.txt");
-            write.Write(this.toSave());
+            write.Write(this.ToString());
             write.Close();
         }
 
@@ -75,6 +75,19 @@ namespace Online_school_library.Controllers
             }
             return false;
         }
+        public Teacher getTeacerById(int id)
+        {
+            foreach(User t in students)
+            {
+                if(t is Teacher &&t.Id.Equals(id))
+                {
+                    Teacher teach = t as Teacher;
 
+                    return teach;
+                }
+            }
+            return null;
+
+        }
     }
 }
